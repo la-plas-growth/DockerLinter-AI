@@ -34,10 +34,10 @@ class DockerLinter:
         """Invia il Dockerfile all'API OpenAI per l'analisi."""
         if not self.instructions:
             raise RuntimeError("Le istruzioni non sono state caricate. Usa fetch_best_practices prima.")
-            
+
         try:
             completion = self.client.chat.completions.create(
-                model="gpt-4",
+                model="gpt-4o",
                 messages=[
                     {
                         "role": "system",
