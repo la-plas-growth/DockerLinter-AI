@@ -1,0 +1,30 @@
+# Ignore Python bytecode and cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore version control and CI/CD config files
+.git/
+.github/
+
+# Ignore Python virtual environment and environment files
+venv/
+.env
+*.env
+
+# Ignore log files
+*.log
+
+# Ignore Docker-related files (if needed)
+Dockerfile
+.dockerignore
+
+# Ignore IDE and editor settings
+.vscode/
+.idea/
+*.swp
+
+# Ignore system files
+.DS_Store
+Thumbs.db

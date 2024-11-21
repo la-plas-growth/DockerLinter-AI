@@ -1,14 +1,21 @@
-# Use a generic and large base image
+# Use the latest official Python image as the base
 FROM python:latest
-# Set the working directory
+
+# Set the working directory inside the container
 WORKDIR /app
-# Copy dependency files
+
+# Copy the requirements file into the container
 COPY requirements.txt ./
-# Install dependencies
+
+# Install the dependencies specified in requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt
-# Copy the source code
+
+# Copy the rest of the application code into the container
 COPY . .
-# Run the app as the root user (bad practice)
-USER root
-# Default command
+
+# Create a non-root user named 'appuser' and switch to it
+RUN useradd -m appuser
+USER appuser
+
+# Set the default command to run the application
 CMD ["python", "main.py"]
