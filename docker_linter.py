@@ -10,30 +10,29 @@ class DockerLinter:
         self.client = OpenAI(api_key=api_key)
     
     def fetch_best_practices(self):
-        """Scarica il contenuto di un URL e lo salva come testo."""
+        """Downloads URL content and saves it as text"""
         try:
             response = requests.get(self.url)
             response.raise_for_status()
             soup = BeautifulSoup(response.text, 'html.parser')
             self.instructions = soup.get_text()
-            print("Best practices scaricate con successo.")
         except Exception as e:
-            raise RuntimeError(f"Errore durante il download delle best practices: {e}")
+            raise RuntimeError(f"Error while downloading best practices content: {e}")
     
     def read_dockerfile(self, file_path):
-        """Legge il contenuto di un Dockerfile da un file."""
+        """Read Dockerfile content from file"""
         try:
             with open(file_path, "r") as file:
                 return file.read()
         except FileNotFoundError:
-            raise RuntimeError(f"Dockerfile non trovato: {file_path}")
+            raise RuntimeError(f"Dockerfile not found: {file_path}")
         except Exception as e:
-            raise RuntimeError(f"Errore durante la lettura del Dockerfile: {e}")
+            raise RuntimeError(f"Error during Dockerfile reading: {e}")
     
     def analyze_dockerfile(self, dockerfile_content):
-        """Invia il Dockerfile all'API OpenAI per l'analisi."""
+        """Send Dockerfile to API OpenAI for Analysis."""
         if not self.instructions:
-            raise RuntimeError("Le istruzioni non sono state caricate. Usa fetch_best_practices prima.")
+            raise RuntimeError("Instructions are not been loaded. Use fetch_best_practices first.")
 
         try:
             completion = self.client.chat.completions.create(
@@ -51,4 +50,4 @@ class DockerLinter:
             )
             return completion.choices[0].message.content
         except Exception as e:
-            raise RuntimeError(f"Errore durante l'interazione con l'API OpenAI: {e}")
+            raise RuntimeError(f"Error during API OpenAI iteration: {e}")

@@ -29,14 +29,15 @@ def main():
 
     DOCKERFILE_PATH = args.dockerfile
 
-    # Leggi il Dockerfile
+    # Read Dockerfile
     dockerfile_content = linter.read_dockerfile(DOCKERFILE_PATH)
         
-    # Analizza il Dockerfile
+    # Analyze Dockerfile
     analysis = linter.analyze_dockerfile(dockerfile_content)
     
-    # Mostra il risultato
-    print("Risultato dell'analisi del Dockerfile:")
+    # Show Results
+    print("Here is the Analysis")
+    print("-----------------------")
     print(analysis)
 
 if __name__ == "__main__":
