@@ -38,7 +38,7 @@ Dockerfile Linter is a tool designed to analyze Dockerfiles and verify their com
 You can also run the linter directly from a Docker container:
 
 ```bash
-docker run   -e OPENAI_API_KEY="your_openai_api_key"   -v $(pwd)/Dockerfile:/app/Dockerfile   ghcr.io/la-plas-growth/dockerlinter-ai:4273633ddd1dd732d227a78d967745391a09291b   /app/Dockerfile
+docker run   -e OPENAI_API_KEY="your_openai_api_key"   -v $(pwd):/app/Dockerfile   ghcr.io/la-plas-growth/dockerlinter-ai:4273633ddd1dd732d227a78d967745391a09291b   /app/Dockerfile
 ```
 
 Replace `your_openai_api_key` with your actual OpenAI API key. This example mounts a local `Dockerfile` to the container and passes it for analysis.
