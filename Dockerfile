@@ -18,4 +18,4 @@ RUN useradd -m appuser
 USER appuser
 
 # Set the default command to run the application
-CMD ["python", "main.py"]
+ENTRYPOINT ["python", "main.py"]
