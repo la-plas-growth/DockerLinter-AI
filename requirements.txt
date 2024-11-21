@@ -1,0 +1,4 @@
+dockerfile-parse==2.0.1
+markdown-it-py==3.0.0
+openai==1.55.0
+beautifulsoup4==4.12.3
